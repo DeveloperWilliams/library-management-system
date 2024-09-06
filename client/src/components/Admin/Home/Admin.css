@@ -1,0 +1,9 @@
+.admin {
+  background-image: url("./vector1.jpg");
+  height: 100vh;
+  background-position: center;
+  background-size: cover;
+}
+.admin .top{
+    background-color: aliceblue;
+}

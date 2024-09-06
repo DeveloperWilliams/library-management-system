@@ -1,0 +1,67 @@
+.home {
+  background-image: url("./vector.jpg");
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.home .login {
+  display: flex;
+}
+.home .login .left,
+.home .login .right {
+  width: 400px;
+  height: 400px;
+}
+.home .login form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: inherit;
+  width: inherit;
+  flex-direction: column;
+  gap: 50px;
+}
+.home .login form h5 {
+  font-size: 20px;
+  font-family: cursive;
+}
+.home .login form div {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.home .login form .myLogin {
+  gap: 10px;
+}
+.home .login form div input {
+  outline: none;
+  width: 350px;
+  border: 0px;
+  border-bottom: 2px solid rgb(225, 144, 13);
+  background-color: transparent;
+  padding: 5px;
+  text-align: center;
+  font-family: cursive;
+}
+.home .login form div button {
+  border: 0px;
+  background-color: rgb(225, 144, 13);
+  padding: 7px 0px;
+  width: 290px;
+  color: white;
+  border-radius: 5px;
+  font-family: cursive;
+}
+.home .login form div a{
+    font-family: cursive;
+    text-decoration: none;
+    font-size: 13px;
+    color: black;
+    font-style: italic;
+}

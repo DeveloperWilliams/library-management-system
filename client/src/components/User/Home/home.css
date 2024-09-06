@@ -1,0 +1,53 @@
+.User {
+  height: 100vh;
+  background-image: url("./vector1.jpg");
+  background-position: center;
+  background-size: cover;
+}
+.top {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 120px;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  left: 0;
+  right: 0;
+  top: 0;
+  position: fixed;
+  align-items: center;
+  background-color: whitesmoke;
+}
+ .top h6 {
+  font-family: "Sevillana", cursive;
+  font-family: "Matemasie", sans-serif;
+  font-size: 26px;
+}
+ .top ul {
+  display: flex;
+  list-style: none;
+  gap: 50px;
+}
+ .top ul li {
+  font-family: "Sevillana", cursive;
+  font-family: "Matemasie", sans-serif;
+}
+
+ .top ul li em {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 12px;
+  color: brown;
+}
+ .top ul li button {
+  border: 0px;
+  cursor: pointer;
+  font-family: "Matemasie", sans-serif;
+  font-family: "Josefin Sans", sans-serif;
+  text-decoration: underline;
+  color: grey;
+}
+ .top ul a {
+  text-decoration: none;
+  font-family: cursive;
+  font-family: "Josefin Sans", sans-serif;
+  color: brown;
+}
