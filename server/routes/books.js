@@ -15,11 +15,22 @@ import {
   getCompBooks,
 } from "../controllers/books.js";
 import authenticate from "../middleware/auth.js";
+import multer from "multer";
+
 
 const router = express.Router();
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "uploads/");
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + "-" + file.originalname);
+  },
+});
+const upload = multer({ storage: storage });
 
 // Admin routes
-router.post("/add", addBook);
+router.post('/add', upload.single('img'), addBook)
 router.get("/", getBooks);
 router.get("/math", getMathBooks);
 router.get("/english", getEngBooks);

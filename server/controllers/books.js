@@ -1,17 +1,36 @@
 import Book from "../models/Book.js";
 import Request from "../models/Request.js";
 import User from "../models/User.js";
+import multer from "multer";
+
+//multer
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "uploads/");
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + "-" + file.originalname);
+  },
+});
 
 //addBook
 export const addBook = async (req, res) => {
-  const { title, author, category, quantity, img } = req.body;
+  const { title, author, category, quantity } = req.body;
+  const imgPath = req.file.path;
 
   try {
-    const newBook = new Book({ title, author, category, quantity, img });
+    const newBook = new Book({
+      title,
+      author,
+      category,
+      quantity,
+      img: imgPath,
+    });
+
     await newBook.save();
-    res.status(201).json(newBook);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
+    res.status(201).json({ message: "success" });
+  } catch (error) {
+    res.status(500).json({ error: "Failed to add book" });
   }
 };
 
