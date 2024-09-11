@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "./home.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import AdminTop from "../../Admin/Home/AdminTop";
 
 function Home() {
   const [mathBook, setMathBook] = useState("");
@@ -66,28 +67,10 @@ function Home() {
 
   console.log(mathBook, engBook, compBook);
 
-  const onLogOut = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("username");
-    localStorage.removeItem("role");
-    localStorage.removeItem("name");
-    navigate("/");
-  };
-
   return (
     <>
       <div className="User">
-        <div className="top">
-          <h6>Archy</h6>
-          <ul>
-            <li>
-              Hello, <em>{localStorage.getItem("name")}</em>
-            </li>
-            <li>
-              <button onClick={onLogOut}>Log Out</button>
-            </li>
-          </ul>
-        </div>
+        <AdminTop />
       </div>
     </>
   );

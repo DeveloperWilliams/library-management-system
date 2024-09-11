@@ -1,0 +1,51 @@
+.addBook {
+  padding: 120px;
+  padding-bottom: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.addBook h5 {
+  font-family: "Matemasie", sans-serif;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 29px;
+}
+.addBook form {
+  margin-top: 20px;
+  width: 80%;
+  background-color: aliceblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 30px;
+  padding: 30px;
+  padding-bottom: 10px;
+}
+.addBook form input {
+  height: 30px;
+  width: 60%;
+  background-color: transparent;
+  outline: none;
+  text-align: center;
+  border: 0px;
+  border-bottom: 1px solid grey;
+  font-family: "Matemasie", sans-serif;
+  font-family: "Josefin Sans", sans-serif;
+  display: flex;
+}
+.addBook form .file{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.addBook form button{
+  width: 50%;
+  height: 30px;
+  background-color: whitesmoke;
+  font-family: "Josefin Sans", sans-serif;
+  color: black;
+  border: 1px solid grey;
+  cursor: pointer;
+}
