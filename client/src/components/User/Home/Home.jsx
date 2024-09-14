@@ -65,12 +65,57 @@ function Home() {
     VerifyToken();
   }, [navigate]);
 
-  console.log(mathBook, engBook, compBook);
 
   return (
     <>
       <div className="User">
         <AdminTop />
+        <h1>Mathematics Books</h1>
+        <div className="books">
+          {mathBook &&
+            mathBook.map((book) => (
+              <Link to={book._id}>
+                <div className="book" key={book._id}>
+                  <img src={book.imageUrl} alt="book" />
+                  <h3>{book.title}</h3>
+                  <p>{book.author}</p>
+                  <p>{book.price}</p>
+                </div>
+              </Link>
+            ))}
+        </div>
+        <h1>English Books</h1>
+        <div className="eng">
+          <div className="books">
+            {engBook &&
+              engBook.map((book) => (
+                <Link to={book._id}>
+                  <div className="book" key={book._id}>
+                    <img src={book.imageUrl} alt="book" />
+                    <h3>{book.title}</h3>
+                    <p>{book.author}</p>
+                    <p>{book.price}</p>
+                  </div>
+                </Link>
+              ))}
+          </div>
+        </div>
+        <h1>Computer Books</h1>
+        <div className="comp">
+          <div className="books">
+            {compBook &&
+              compBook.map((book) => (
+                <Link to={book._id}>
+                  <div className="book" key={book._id}>
+                    <img src={book.imageUrl} alt="book" />
+                    <h3>{book.title}</h3>
+                    <p>{book.author}</p>
+                    <p>{book.price}</p>
+                  </div>
+                </Link>
+              ))}
+          </div>
+        </div>
       </div>
     </>
   );

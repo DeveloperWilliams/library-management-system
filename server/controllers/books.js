@@ -2,6 +2,7 @@ import Book from "../models/Book.js";
 import Request from "../models/Request.js";
 import User from "../models/User.js";
 import multer from "multer";
+import path from "path";
 
 //multer
 const storage = multer.diskStorage({
@@ -16,7 +17,7 @@ const storage = multer.diskStorage({
 //addBook
 export const addBook = async (req, res) => {
   const { title, author, category, quantity } = req.body;
-  const imgPath = req.file.path;
+  const imgPath = req.file.path; 
 
   try {
     const newBook = new Book({
@@ -35,10 +36,19 @@ export const addBook = async (req, res) => {
 };
 
 //get All Books
+
 export const getBooks = async (req, res) => {
   try {
     const books = await Book.find();
-    res.json(books);
+
+    const booksWithImageURL = books.map((book) => ({
+      ...book._doc, // Spread the existing book data
+      imageUrl: `${req.protocol}://${req.get("host")}/uploads/${path.basename(
+        book.img
+      )}`,
+    }));
+
+    res.json(booksWithImageURL);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -48,19 +58,37 @@ export const getBooks = async (req, res) => {
 export const getMathBooks = async (req, res) => {
   try {
     const mathBooks = await Book.find({ category: "Mathematics" });
-    res.json(mathBooks);
+
+    // Add the image URL to each book
+    const booksWithImageURL = mathBooks.map((book) => ({
+      ...book._doc,
+      imageUrl: `${req.protocol}://${req.get("host")}/${path.posix.join(
+        book.img
+      )}`,
+    }));
+
+    res.json(booksWithImageURL);
   } catch (error) {
-    res.status(500).json({});
+    res.status(500).json({ error: error.message });
   }
 };
 
 // fetch Eng Books
 export const getEngBooks = async (req, res) => {
   try {
-    const EngBooks = await Book.find({ category: "English" });
-    res.json(EngBooks);
+    const engBooks = await Book.find({ category: "English" });
+
+    // Add the image URL to each book
+    const booksWithImageURL = engBooks.map((book) => ({
+      ...book._doc,
+      imageUrl: `${req.protocol}://${req.get("host")}/${path.posix.join(
+        book.img
+      )}`,
+    }));
+
+    res.json(booksWithImageURL);
   } catch (error) {
-    res.status(500).json({});
+    res.status(500).json({ error: error.message });
   }
 };
 
@@ -68,9 +96,18 @@ export const getEngBooks = async (req, res) => {
 export const getCompBooks = async (req, res) => {
   try {
     const compBooks = await Book.find({ category: "Computer" });
-    res.json(compBooks);
+
+    // Add the image URL to each book
+    const booksWithImageURL = compBooks.map((book) => ({
+      ...book._doc,
+      imageUrl: `${req.protocol}://${req.get("host")}/${path.posix.join(
+        book.img
+      )}`,
+    }));
+
+    res.json(booksWithImageURL);
   } catch (error) {
-    res.status(500).json({});
+    res.status(500).json({ error: error.message });
   }
 };
 

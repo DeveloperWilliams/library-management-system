@@ -30,7 +30,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 // Admin routes
-router.post('/add', upload.single('img'), addBook)
+router.post('/add', upload.single('img'), addBook)    
 router.get("/", getBooks);
 router.get("/math", getMathBooks);
 router.get("/english", getEngBooks);

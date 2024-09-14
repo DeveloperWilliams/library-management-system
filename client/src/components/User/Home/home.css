@@ -1,8 +1,21 @@
 .User {
-  height: 100vh;
   background-image: url("./vector1.jpg");
   background-position: center;
   background-size: cover;
+  padding: 90px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 30px;
+}
+.User h1 {
+  font-family: "Matemasie", sans-serif;
+  font-family: "Josefin Sans", sans-serif;
+  font-family: "Sevillana", cursive;
+  color: brown;
+  margin-top: 10px;
 }
 .top {
   display: flex;
@@ -16,28 +29,29 @@
   position: fixed;
   align-items: center;
   background-color: whitesmoke;
+  z-index: 1000;
 }
- .top h6 {
+.top h6 {
   font-family: "Sevillana", cursive;
   font-family: "Matemasie", sans-serif;
   font-size: 26px;
 }
- .top ul {
+.top ul {
   display: flex;
   list-style: none;
   gap: 50px;
 }
- .top ul li {
+.top ul li {
   font-family: "Sevillana", cursive;
   font-family: "Matemasie", sans-serif;
 }
 
- .top ul li em {
+.top ul li em {
   font-family: "Josefin Sans", sans-serif;
   font-size: 12px;
   color: brown;
 }
- .top ul li button {
+.top ul li button {
   border: 0px;
   cursor: pointer;
   font-family: "Matemasie", sans-serif;
@@ -45,9 +59,38 @@
   text-decoration: underline;
   color: grey;
 }
- .top ul a {
+.top ul a {
   text-decoration: none;
   font-family: cursive;
   font-family: "Josefin Sans", sans-serif;
   color: brown;
+}
+.books {
+  grid-template-columns: repeat(3, 1fr);
+  display: grid;
+  gap: 50px;
+  row-gap: 50px;
+}
+.book {
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  background-color: whitesmoke;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 350px;
+  position: relative;
+  font-family: "Matemasie", sans-serif;
+  font-family: "Josefin Sans", sans-serif;
+  gap: 5px;
+  text-align: center;
+  cursor: pointer;
+}
+.book img {
+  width: 100%;
+  height: 80%;
+}
+a {
+  text-decoration: none;
+  color: black;
 }
