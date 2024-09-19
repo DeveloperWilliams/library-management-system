@@ -18,7 +18,7 @@ function Login() {
         username: email,
         password,
       });
-      
+
       if (response.data.message == "success") {
         localStorage.setItem("username", response.data.user.username);
         localStorage.setItem("role", response.data.user.role);
@@ -33,11 +33,11 @@ function Login() {
       }
     } catch (error) {
       if (error.response.status === 404) {
-        toast.error("Email not found");
+         toast.error("Email not found");
       } else if (error.response.status === 400) {
-        toast.error("Invalid Password");
+        return toast.error("Invalid Password");
       } else {
-        toast.error("Something went wrong");
+        return toast.error("Something went wrong");
       }
     }
   };

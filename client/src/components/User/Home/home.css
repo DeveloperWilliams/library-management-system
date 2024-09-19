@@ -59,6 +59,30 @@
   text-decoration: underline;
   color: grey;
 }
+.top ul li .cart {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.top ul li img {
+  height: 30px;
+}
+.top ul li .num {
+  background-color: brown;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  padding: 10px;
+  color: white;
+  font-size: 10px;
+  padding: 5px;
+  position: absolute;
+  justify-self: center;
+  font-size: 13px;
+}
 .top ul a {
   text-decoration: none;
   font-family: cursive;
@@ -82,15 +106,25 @@
   position: relative;
   font-family: "Matemasie", sans-serif;
   font-family: "Josefin Sans", sans-serif;
-  gap: 5px;
+  gap: 6px;
   text-align: center;
   cursor: pointer;
+  width: 250px;
 }
 .book img {
   width: 100%;
-  height: 80%;
+  height: 75%;
 }
 a {
   text-decoration: none;
   color: black;
+}
+.book button {
+  background-color: #f0c14b;
+  border: 1px solid;
+  margin-top: 10px;
+  padding: 5px 10px;
+  color: #111;
+  cursor: pointer;
+  font-family: "Josefin Sans", sans-serif;
 }

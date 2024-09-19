@@ -1,0 +1,63 @@
+.cart-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 100px;
+  font-family: "Josefin Sans", sans-serif;
+}
+.cart-container h2{
+    font-family: "Matemasie", sans-serif;
+    font-family: "Josefin Sans", sans-serif;
+    margin-bottom: 10px;
+}
+.cart-container .cart-items {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  height: calc(100vh - 200px);
+  align-items: center;
+}
+.cart-container .cart-items p{
+  color: red;
+}
+.cart-container .cart-items .book-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: whitesmoke;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  gap: 10px;
+  height: 350px;
+  font-family: "Matemasie", sans-serif;
+  font-family: "Josefin Sans", sans-serif;
+}
+.cart-container .cart-items .book-item img {
+  height: 70%;
+  width: 100%;
+}
+.cart-container .cart-items .book-item button {
+  background-color: #f0c14b;
+  border: 1px solid;
+  margin-top: 10px;
+  padding: 5px 10px;
+  color: #111;
+  cursor: pointer;
+  font-family: "Josefin Sans", sans-serif;
+}
+.cart-button-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+.cart-button-div button {
+  background-color: rgb(150, 198, 150);
+  border: 1px solid;
+  padding: 10px 20px;
+  color: #111;
+  cursor: pointer;
+  font-family: "Josefin Sans", sans-serif;
+}

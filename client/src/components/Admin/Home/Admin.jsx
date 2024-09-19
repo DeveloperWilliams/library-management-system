@@ -3,7 +3,7 @@ import "./Admin.css";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import axios from "axios";
-import AdminTop from "./AdminTop";
+import MyAdminTop from "./MyAdminTop";
 
 function Admin() {
   const navigate = useNavigate();
@@ -28,7 +28,7 @@ function Admin() {
   return (
     <>
       <div className="admin">
-        <AdminTop />
+        <MyAdminTop/>
       </div>
     </>
   );

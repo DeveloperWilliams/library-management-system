@@ -4,6 +4,10 @@ import "./home.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import AdminTop from "../../Admin/Home/AdminTop";
+import { toast, ToastContainer, Bounce } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import e from "cors";
+
 
 function Home() {
   const [mathBook, setMathBook] = useState("");
@@ -65,23 +69,59 @@ function Home() {
     VerifyToken();
   }, [navigate]);
 
+  const addToCart = async (id) => {
+    const token = localStorage.getItem("token");
+    try {
+      const response = await axios.post(
+        `http://localhost:8080/book/cart/add`,
+        { bookId: id },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      if (response.data.message == "Book added to cart") {
+        toast.success("Book added to cart");  
+      }
+    } catch (error) {
+      if (error.response.data.message == "Book already in cart") {
+        return toast.error("Book already in cart")
+      } else if (error.response.data.message == "3 books") {
+        return toast.error("You can only add 3 books to cart")
+      } else {
+        return toast.error("Something went wrong");
+      }
+    }
+  };
 
   return (
     <>
       <div className="User">
+      <ToastContainer
+          position="top-center"
+          autoClose={3000}
+          newestOnTop={true}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="colored"
+          transition={Bounce}
+        />
         <AdminTop />
         <h1>Mathematics Books</h1>
         <div className="books">
           {mathBook &&
             mathBook.map((book) => (
-              <Link to={book._id}>
-                <div className="book" key={book._id}>
-                  <img src={book.imageUrl} alt="book" />
-                  <h3>{book.title}</h3>
-                  <p>{book.author}</p>
-                  <p>{book.price}</p>
-                </div>
-              </Link>
+              <div className="book" key={book._id}>
+                <img src={book.imageUrl} alt="book" />
+                <h3>{book.title}</h3>
+                <p>{book.author}</p>
+                <p>{book.price}</p>
+                <button onClick={() => addToCart(book._id)}>Add to Cart</button>
+              </div>
             ))}
         </div>
         <h1>English Books</h1>
@@ -89,14 +129,15 @@ function Home() {
           <div className="books">
             {engBook &&
               engBook.map((book) => (
-                <Link to={book._id}>
-                  <div className="book" key={book._id}>
-                    <img src={book.imageUrl} alt="book" />
-                    <h3>{book.title}</h3>
-                    <p>{book.author}</p>
-                    <p>{book.price}</p>
-                  </div>
-                </Link>
+                <div className="book" key={book._id}>
+                  <img src={book.imageUrl} alt="book" />
+                  <h3>{book.title}</h3>
+                  <p>{book.author}</p>
+                  <p>{book.price}</p>
+                  <button onClick={() => addToCart(book._id)}>
+                    Add to Cart
+                  </button>
+                </div>
               ))}
           </div>
         </div>
@@ -105,14 +146,15 @@ function Home() {
           <div className="books">
             {compBook &&
               compBook.map((book) => (
-                <Link to={book._id}>
-                  <div className="book" key={book._id}>
-                    <img src={book.imageUrl} alt="book" />
-                    <h3>{book.title}</h3>
-                    <p>{book.author}</p>
-                    <p>{book.price}</p>
-                  </div>
-                </Link>
+                <div className="book" key={book._id}>
+                  <img src={book.imageUrl} alt="book" />
+                  <h3>{book.title}</h3>
+                  <p>{book.author}</p>
+                  <p>{book.price}</p>
+                  <button onClick={() => addToCart(book._id)}>
+                    Add to Cart
+                  </button>
+                </div>
               ))}
           </div>
         </div>

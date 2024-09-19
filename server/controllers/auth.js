@@ -55,22 +55,23 @@ export const Login = async (req, res) => {
   const { username, password } = req.body;
 
   try {
-    const checkUser = await User.findOne({ username });
+    const user = await User.findOne({ username });
 
-    if (!checkUser) {
+    if (!user) {
       return res.status(404).json({ message: "Not Found" });
     }
-    if (!checkUser.isActive == "true") {
+
+    if (!user.isActive) {
       return res.status(400).json({ message: "Account Suspended" });
     }
 
-    const isMatch = await bcrypt.compare(password, checkUser.password);
+    const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
-      return req.status(400).json({ message: "Invalid Password" });
+      return res.status(400).json({ message: "Invalid Password" });
     }
 
     const token = jwt.sign(
-      { id: checkUser._id, role: checkUser.role },
+      { id: user._id, role: user.role },
       process.env.JWT_SECRET,
       { expiresIn: "1h" }
     );
@@ -79,13 +80,13 @@ export const Login = async (req, res) => {
       message: "success",
       token,
       user: {
-        username: checkUser.username,
-        role: checkUser.role,
-        id: checkUser._id,
-        name: checkUser.fullNames,
+        username: user.username,
+        role: user.role,
+        id: user._id,
+        name: user.fullNames,
       },
     });
   } catch (error) {
-    res.status(500);
+    return res.status(500).json({ message: 'Server error' });
   }
 };

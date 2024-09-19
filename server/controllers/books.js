@@ -17,7 +17,7 @@ const storage = multer.diskStorage({
 //addBook
 export const addBook = async (req, res) => {
   const { title, author, category, quantity } = req.body;
-  const imgPath = req.file.path; 
+  const imgPath = req.file.path;
 
   try {
     const newBook = new Book({
@@ -123,10 +123,8 @@ export const deleteBook = async (req, res) => {
 };
 
 //// Add book to cart
-
 export const addToCart = async (req, res) => {
   const { bookId } = req.body;
-
   const userId = req.user.id;
 
   try {
@@ -136,13 +134,13 @@ export const addToCart = async (req, res) => {
       return res.status(400).json({ message: "Book Unavailable" });
     }
 
-    const user = User.findById(userId);
+    const user = await User.findById(userId);
     if (user.cart.length >= 3) {
-      return res.status(400).json({ message: "3 Books" });
+      return res.status(400).json({ message: "3 books" });
     }
 
     if (user.cart.includes(bookId)) {
-      return res.status(400).json({ message: "Book Exist" });
+      return res.status(400).json({ message: "Book already in cart" });
     }
 
     user.cart.push(bookId);
@@ -153,6 +151,32 @@ export const addToCart = async (req, res) => {
   }
 };
 
+// Get books in cart
+export const getCart = async (req, res) => {
+  const userId = req.user.id;
+  try {
+    const user = await User.findById(userId).populate("cart");
+
+    res.status(200).json({
+      message: "Books in cart",
+      cart: user.cart,
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+export const getCartLength = async (req, res) => {
+  const userId = req.user.id;
+
+  try {
+    const user = await User.findById(userId).populate("cart");
+
+    res.json({ cartLength: user.cart.length });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
 // Remove book from cart
 
 export const removeFromCart = async (req, res) => {
@@ -174,27 +198,39 @@ export const requestBooksFromCart = async (req, res) => {
   const userId = req.user.id;
 
   try {
-    const user = await User.findById(userId).populate("cart");
-    if (user.cart.length === 0) {
-      return res.status(400).json({ message: "Your cart is empty" });
+    // Check if the user has a pending request
+    const existingPendingRequest = await Request.findOne({
+      user: userId,
+      status: "pending",
+    });
+
+    if (existingPendingRequest) {
+      return res.status(400).json({ message: "You have a pending request" });
     }
 
+    // Fetch the user and populate the cart
+    const user = await User.findById(userId).populate("cart");
+
+    // Create an array of book requests
     const bookRequests = user.cart.map((bookId) => ({
       user: userId,
       book: bookId,
     }));
 
+    // Insert new requests into the database
     const requests = await Request.insertMany(bookRequests);
 
+    // Clear the user's cart
     user.cart = [];
     await user.save();
 
-    res.status(201).json({ message: "Borrow request submitted", requests });
+    // Respond with success message
+    res.status(201).json({ message: "Request submitted", requests });
   } catch (err) {
+    // Handle errors
     res.status(500).json({ error: err.message });
   }
 };
-
 // Get user's own requests (user view)
 export const getUserRequests = async (req, res) => {
   const userId = req.user.id;
