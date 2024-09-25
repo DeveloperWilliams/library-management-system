@@ -6,7 +6,6 @@ import axios from "axios";
 import AdminTop from "../../Admin/Home/AdminTop";
 import { toast, ToastContainer, Bounce } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import e from "cors";
 
 
 function Home() {
