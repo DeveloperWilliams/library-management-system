@@ -19,6 +19,7 @@ function Login() {
         password,
       });
 
+
       if (response.data.message == "success") {
         localStorage.setItem("username", response.data.user.username);
         localStorage.setItem("role", response.data.user.role);
@@ -37,7 +38,7 @@ function Login() {
       } else if (error.response.status === 400) {
         return toast.error("Invalid Password");
       } else {
-        return toast.error("Something went wrong");
+        return toast.error("An error occurred, try again");
       }
     }
   };

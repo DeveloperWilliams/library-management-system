@@ -1,17 +1,17 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import authRoutes from "./server/routes/auth.js";
-import bookRoutes from "./server/routes/books.js"
+import authRoutes from "./routes/auth.js";
+import bookRoutes from "./routes/books.js"
 import mongoose from "mongoose";
 import path from 'path';
-import { fileURLToPath } from 'url';
+import { fileURLToPath } from 'url'; 
 
 dotenv.config();
 
 // Get __dirname in ES module
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const __filename = fileURLToPath(import.meta.url);    
+const __dirname = path.dirname(__filename); 
 
 const app = express();
 
@@ -31,4 +31,4 @@ mongoose
   .then(() =>
     app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
   )
-  .catch((err) => console.log(err));
+  .catch((err) => console.log(err));        

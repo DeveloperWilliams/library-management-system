@@ -37,6 +37,7 @@ This is a Library Management System built using the MERN stack (MongoDB, Express
     ```env
     MONGO_URI=your_mongodb_connection_string
     JWT_SECRET=your_jwt_secret
+    PORT=your_port
     ```
 
 4. Start the development servers:
