@@ -1,4 +1,4 @@
-# Library Management System
+# Library Management System.
 
 This is a Library Management System built using the MERN stack (MongoDB, Express.js, React, Node.js). The system supports multiple user logins, authentication, adding books to a cart, and requesting books.
 
