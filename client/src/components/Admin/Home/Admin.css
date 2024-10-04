@@ -4,28 +4,37 @@
   background-position: center;
   background-size: cover;
 }
-.admin .top{
-    background-color: aliceblue;
+.admin .top {
+  background-color: aliceblue;
 }
-.admin .top a{
+.admin .top a {
   text-decoration: none;
   color: black;
 }
-.admin_body{
-  padding: 120px 30px;
+.admin_body {
+  padding: 0px 60px;
+  padding-top: 80px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  column-gap: 60px;
+  row-gap: 0px;
   place-items: center;
+  height: 80vh;
 }
-.admin_body a{
-  background-color: white;
+.admin_body a {
+  background-color: aliceblue;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px,
+    rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
   text-align: center;
-  background-color: rgb(81, 192, 220);
-  width: 150px;
+  width: 100%;
   height: 50px;
   cursor: pointer;
+  font-family: "Josefin Sans", sans-serif;
+  color: black;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
