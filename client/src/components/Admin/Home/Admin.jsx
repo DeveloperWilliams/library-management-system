@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import axios from "axios";
 import MyAdminTop from "./MyAdminTop";
+import { Link } from "react-router-dom";
 
 function Admin() {
   const navigate = useNavigate();
@@ -28,7 +29,15 @@ function Admin() {
   return (
     <>
       <div className="admin">
-        <MyAdminTop/>
+        <MyAdminTop />
+        <div className="admin_body">
+          <Link to="/admin/add-new-book">Add New Book</Link>
+          <Link>View/Edit Books</Link>
+          <Link>View/Edit Users</Link>
+          <Link>View Pending Request</Link>
+          <Link>View Sucessful Requests</Link>
+          <Link>View Rejected Request</Link>
+        </div>
       </div>
     </>
   );

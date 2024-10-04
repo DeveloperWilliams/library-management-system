@@ -11,3 +11,21 @@
   text-decoration: none;
   color: black;
 }
+.admin_body{
+  padding: 120px 30px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  place-items: center;
+}
+.admin_body a{
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  background-color: rgb(81, 192, 220);
+  width: 150px;
+  height: 50px;
+  cursor: pointer;
+}

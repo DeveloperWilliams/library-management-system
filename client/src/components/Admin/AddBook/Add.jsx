@@ -1,10 +1,10 @@
 import React, { useState, useRef } from "react";
-import AdminTop from "../Home/AdminTop";
 import "./Add.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast, Bounce } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import MyAdminTop from "../Home/MyAdminTop";
 
 function Add() {
   const [title, setTitle] = useState("");
@@ -17,16 +17,16 @@ function Add() {
   const fileInputRef = useRef(null); // Create a reference for the file input
 
   const clearForm = () => {
-      setTitle("");
-      setAuthor("");
-      setCategory("");
-      setQuantity("");
-      setFile(null);  // Clear file state
+    setTitle("");
+    setAuthor("");
+    setCategory("");
+    setQuantity("");
+    setFile(null); // Clear file state
 
-      // Clear the file input field by targeting the DOM element directly
-      if (fileInputRef.current) {
-          fileInputRef.current.value = ""; // This clears the file input
-      }
+    // Clear the file input field by targeting the DOM element directly
+    if (fileInputRef.current) {
+      fileInputRef.current.value = ""; // This clears the file input
+    }
   };
 
   const handleFileChange = (e) => setFile(e.target.files[0]);
@@ -75,7 +75,7 @@ function Add() {
           theme="colored"
           transition={Bounce}
         />
-        <AdminTop />
+        <MyAdminTop />  
         <div className="addBook">
           <h5>Add New Book</h5>
           <form onSubmit={handleSubmit}>
