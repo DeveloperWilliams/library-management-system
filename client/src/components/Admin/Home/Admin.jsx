@@ -32,8 +32,8 @@ function Admin() {
         <MyAdminTop />
         <div className="admin_body">
           <Link to="/admin/add-new-book">Add New Book</Link>
-          <Link>View/Edit Books</Link>
-          <Link>View/Edit Users</Link>
+          <Link to='/admin/view-book'>View/Edit Books</Link>
+          <Link to="/admin/view-user">View/Edit Users</Link>
           <Link>View Pending Request</Link>
           <Link>View Sucessful Requests</Link>
           <Link>View Rejected Request</Link>
